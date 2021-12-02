@@ -16,6 +16,7 @@ public interface UserDao {
   List<User> findByNo(int no) throws Exception;
   User findByEmailAndPassword(@Param("email") String email, @Param("password") String password) throws Exception;
   User findEmailByNameAndTel(@Param("name") String name, @Param("tel") String tel) throws Exception;
+  User findByNameAndEmail(@Param("name") String name, @Param("email") String email) throws Exception;
 
-  String idOverlap(String email) throws Exception;
+  String nicknameOverlap(String nickname) throws Exception;
 }

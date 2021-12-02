@@ -5,7 +5,7 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
   version="4.0">
   
-  <display-name>today-study-server</display-name>
+  <display-name>woo-project</display-name>
 
 <!-- POST 요청 파라미터의 문자집합을 지정하는 필터 -->
   <filter>
@@ -31,7 +31,7 @@
     </init-param>
     <init-param> <!-- 빈 컨테이너의 설정 정보를 다루는 클래스를 지정한다. -->
       <param-name>contextConfigLocation</param-name>
-      <param-value>com.ogong.pms.config.AppConfig</param-value>
+      <param-value>com.woo.pms.config.AppConfig</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
     <multipart-config>
