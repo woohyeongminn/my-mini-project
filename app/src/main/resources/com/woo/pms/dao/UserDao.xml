@@ -17,6 +17,20 @@
     <result column="active" property="activityState"/>
   </resultMap>
   
+  <sql id="select1">
+    select
+      u.name,
+      u.nickname,
+      u.email,
+      u.photo,
+      u.tel,
+      u.join_dt,
+      u.active
+    from
+      user u  
+  </sql>
+
+<!-- ======================================================================= -->  
   <insert id="insert" parameterType="user">
     insert into user(name,nickname,email,password,tel,photo)
     values(#{name},#{nickname},#{email},password(#{password}),#{tel},#{photo})
@@ -52,14 +66,43 @@
   </update> 
 
 <!-- 닉네임 중복 확인하기  -->
-<select id="nickOverlap" resultType="string">
-  select
-    nickname
-  from
-    user
-  where
-    nickname = #{nickname}
-</select>    
+	<select id="nickOverlap" resultType="string">
+	  select
+	    nickname
+	  from
+	    user
+	  where
+	    nickname = #{nickname}
+	</select>   
+	
+	<select id="findAll" resultMap="UserMap">
+   <include refid="select1"/>
+  </select>
+      
+  <select id="findByNo" resultMap="UserMap">
+   <include refid="select1"/>
+   where
+     user_no = #{no}
+  </select>
+  
+  <select id="findByEmailAndPassword" resultMap="UserMap">
+   <include refid="select1"/>
+   where
+     email = #{email} and password = password(#{password})
+  </select>
+  
+  <select id="findEmailByNameAndTel" resultMap="UserMap">
+   <include refid="select1"/>
+   where
+     name = #{name} and tel = #{tel}
+  </select> 
+  
+  <select id="findByNameAndEmail" resultMap="UserMap">
+   <include refid="select1"/>
+   where
+     name = #{name} and email = #{email}
+  </select>         	 
+
 
 </mapper>
 

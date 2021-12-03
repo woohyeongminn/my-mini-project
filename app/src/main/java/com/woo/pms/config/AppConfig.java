@@ -29,13 +29,13 @@ import org.springframework.web.servlet.view.JstlView;
 //
 
 //1) 빈 컨테이너가 자동으로 객체를 생성해야 하는 패키지를 등록한다.
-@ComponentScan("com.ogong.pms")
+@ComponentScan("com.woo.pms")
 
 //2) Spring WebMVC 관련 객체를 찾아서 등록하는 기능을 활성화시킨다.
 @EnableWebMvc
 
 //3) JDBC 정보를 담고 있는 프로퍼티 파일을 로딩한다.
-@PropertySource("classpath:com/ogong/pms/config/jdbc.properties")
+@PropertySource("classpath:com/woo/pms/config/jdbc.properties")
 
 //4) 애노테이션을 이용하여 트랜잭션을 다루는 기능을 활성화시킨다.
 @EnableTransactionManagement
