@@ -24,19 +24,19 @@
   
   <div id="title">
     <a href="${contextPath}/app/index" >
-      <b>📝hmWoo</b>
+      <p>🖋</p>
     </a>  
   </div> 
   
   <div id="atag">
 	  <a href="${contextPath}/app/user/form" >
-	    <b>회원가입</b>
+	    <b>join</b>
 	  </a> |
 	  <a href="${contextPath}/app/auth/form">
-	    <b>로그인</b>
+	    <b>login</b>
 	  </a> |
 	  <a href="${contextPath}/app/board/list">
-	    <b>게시판</b>
+	    <b>board</b>
 	  </a>
   </div>
 

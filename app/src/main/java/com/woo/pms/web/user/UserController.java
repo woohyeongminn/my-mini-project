@@ -35,7 +35,7 @@ public class UserController {
   public ModelAndView form() {
     ModelAndView mv = new ModelAndView();
 
-    mv.addObject("pageTitle", "✏회원 가입");
+    mv.addObject("pageTitle", "📝join");
     mv.addObject("contentUrl", "user/UserForm.jsp");
     mv.setViewName("template1");    
 
@@ -103,8 +103,8 @@ public class UserController {
   }
 
   //닉네임 중복확인 처리
-  @RequestMapping(value="/user/nickOverlap", method=RequestMethod.POST)
-  public void nickOverlap(HttpServletResponse response, @RequestParam("nick") String nick) throws IOException {
+  @RequestMapping(value="/user/nicknameOverlap", method=RequestMethod.POST)
+  public void nickOverlap(HttpServletResponse response, @RequestParam("nickname") String nick) throws IOException {
     //@RequestParam는 요청의 특정 파라미터 값을 찾아낼 때 사용하는 어노테이션
     userService.nicknameOverlap(nick,response);  //서비스에 있는 nickOverlap 호출.
   } 

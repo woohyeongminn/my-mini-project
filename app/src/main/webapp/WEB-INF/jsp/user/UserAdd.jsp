@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 가입 완료</title>
+<title></title>
 </head>
 <body>
 

@@ -7,6 +7,9 @@
 <html>
 
 <style>
+ .container {
+ text-align: center;
+ }
 </style>
 
 <head>
