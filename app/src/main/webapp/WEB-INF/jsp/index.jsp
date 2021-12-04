@@ -4,13 +4,6 @@
 
 <!DOCTYPE html>
 <html>
-
-<head>
-  <jsp:include page="header.jsp"/>
-</head>
-
-<body>
-  <p>main page</p>
-</body>
-  
-  <jsp:include page="footer.jsp"/>
+	
+	  <p>main page</p>
+	

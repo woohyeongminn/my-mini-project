@@ -10,6 +10,10 @@
  .container {
  text-align: center;
  }
+ body {
+ margin-left: 100px; 
+ margin-right: 100px;
+ }
 </style>
 
 <head>
@@ -26,6 +30,7 @@
 </head>
   <body>
     <jsp:include page="header.jsp"/>
+    <hr>
     
     <main id="main">
 

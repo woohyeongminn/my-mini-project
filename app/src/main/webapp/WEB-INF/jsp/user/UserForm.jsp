@@ -30,7 +30,6 @@
   background: white;
   }  
   
-  
 </style>
 
 <body>
@@ -65,6 +64,7 @@
         </select>
         <input type="button" class="btn btn-outline-dark" value="인증하기" onclick="idOverlap()"/><br>
       </div>   
+      <br>
 
       <div id="mt">
         <label id='f-tel'for='f-tel' class="col-sm-2 col-form-label">tel</label>
@@ -73,12 +73,14 @@
         <input type='text' name='telNo' pattern="[0-9]+" minlength='4' maxlength='4'  style="width:50px;"/>
         <input type="button" class="btn btn-outline-dark" value="인증하기" /><br> 
       </div>
+      <br>
 
       <div id="mnn">
         <label id='f-nicknam'for='f-nickname' class="col-sm-2 col-form-label">nickname</label>
         <input id='i-nickname' type='text' name='nickname' placeholder="*필수" />
         <input type="button" class="btn btn-outline-dark" value="중복확인" onclick="nicknameOverlap()"/><br>
       </div>
+      <br>
             
       <div id="mpw">
         <label id='f-password' for='f-password' class="col-sm-2 col-form-label">password</label>
@@ -87,11 +89,13 @@
          title="영어(대소문자), 숫자, 특수문자를 포함해 8자 이상 16자 이하로 입력해주세요."
          placeholder="*필수"/><br>
       </div>
+      <br>
      
      <div id="mpwc">
       <label id='f-passwordcheck' for='f-passwordcheck' class="col-sm-2 col-form-label">re-input</label>
       <input id='i-passwordcheck' type='password' name='password' placeholder="비밀번호 확인"/><br>
      </div>
+     <br>
      <br>
      <label >개인정보 수집 및 이용에 대한 안내</label>
      <input id="perAgree" type="checkbox"/><br>

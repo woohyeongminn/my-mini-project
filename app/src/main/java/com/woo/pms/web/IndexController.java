@@ -12,8 +12,9 @@ public class IndexController {
   public ModelAndView index() throws Exception {
 
     ModelAndView mv = new ModelAndView();
-    mv.addObject("pageTitle", "Free Board");
-    mv.setViewName("index");
+    mv.addObject("pageTitle", "main");
+    mv.addObject("contentUrl", "index.jsp");
+    mv.setViewName("template1");
     return mv;
   }
 }

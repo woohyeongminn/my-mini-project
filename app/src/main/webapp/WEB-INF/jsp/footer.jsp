@@ -3,5 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
  <footer id="footer" >
- <p>하단</p>
+ <hr>
+ <p style="text-align: center;'">하단</p>
  </footer>

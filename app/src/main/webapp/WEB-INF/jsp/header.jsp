@@ -8,23 +8,27 @@
  
   #atag {
 	 text-align: right;
-	 font-size:16px;
-	  padding: 10px;
+	 font-size:20px;
+	 padding: 10px;
  }
   #title {
-	 text-align: center;
+	 text-align: letf;
 	 font-size:16px;
  }
   b {
 	 font-size: 14px;
 	 line-height: 10px;
  }
+  #ht {
+   font-size: 26px;
+   line-height: 10px;
+ } 
  </style>
   <br>
   
   <div id="title">
     <a href="${contextPath}/app/index" >
-      <p>🖋</p>
+     <p id="ht">woohyeongmin🖋</p>
     </a>  
   </div> 
   
