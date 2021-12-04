@@ -3,16 +3,28 @@
     trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta charset="UTF-8">
+<style>
+  a {
+  color:black;
+  } 
+</style>
+<br><br><br><br>
+    <div id="top">
+      <b style="font-size: 20px">LOGIN</b><br> 
+    </div>
+<hr><br>
 
 <form action="login" method="post">
-
-  <input type="email" name="email" placeholder="email" value="${cookie.email.value}">
-  <input type="password" name="password" placeholder="password" >
-      <div>
-        <div class="form-check">
-           <input id="f-saveEmail" type="checkbox" class="rememberCheck" name="saveEmail" ${not empty cookie.email ? "checked":""}>
-           <span>remember</span>
-        </div>  
-        <button type="submit" class="btn btn-outline-dark" value="로그인" >login</button> 
-      </div>
+  <div id="all">
+    <label>email</label>
+	  <input type="email" name="email" style="border:0 solid black">
+	  <br>
+	  <label>password</label>
+	  <input type="password" name="password" style="border:0 solid black">
+	  <br>
+	  <br>  
+	  <button type="submit" style="background-color:white">login</button> 
+  </div>
 </form>
+
+<br><hr>

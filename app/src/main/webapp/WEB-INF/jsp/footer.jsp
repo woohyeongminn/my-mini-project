@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
- <footer id="footer" >
- <hr>
- <p style="text-align: center;'">하단</p>
+ <footer class="footer" >
+ <p style="text-align: center">footer</p>
  </footer>

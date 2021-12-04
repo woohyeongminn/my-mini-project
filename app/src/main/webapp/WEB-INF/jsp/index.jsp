@@ -4,6 +4,11 @@
 
 <!DOCTYPE html>
 <html>
+<style>
+  a {
+  color:black;
+  } 
+</style>
 	
-	  <p>main page</p>
+	  <p>mini project main page</p>
 	
