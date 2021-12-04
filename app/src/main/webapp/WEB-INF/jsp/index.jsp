@@ -2,13 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html>
-<style>
-  a {
-  color:black;
-  } 
-</style>
-	
-	  <p>mini project main page</p>
-	
+<br><br><br>
+<p>
+ mini project main page
+</p>
+
+

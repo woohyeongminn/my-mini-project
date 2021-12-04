@@ -22,7 +22,6 @@ public class AuthController {
   public ModelAndView loginFrom() {
     ModelAndView mv = new ModelAndView();
 
-    mv.addObject("pageTitle", " login ");
     mv.addObject("contentUrl", "auth/LoginForm.jsp");
     mv.setViewName("template1");
 
@@ -30,7 +29,12 @@ public class AuthController {
   }
 
   @PostMapping("/auth/login")
-  public ModelAndView perLogin(String email, String password, String saveEmail, HttpServletResponse response, HttpSession session) throws Exception {
+  public ModelAndView perLogin(
+      String email,
+      String password,
+      String saveEmail,
+      HttpServletResponse response,
+      HttpSession session) throws Exception {
     Cookie cookie = null;
 
     if (saveEmail != null) {
@@ -45,6 +49,7 @@ public class AuthController {
     response.addCookie(cookie);
 
     User user = userDao.findByEmailAndPassword(email, password);
+    System.out.println(user);
 
     ModelAndView mv = new ModelAndView();
 
@@ -53,9 +58,8 @@ public class AuthController {
       mv.setViewName("redirect:../index");
 
     } else {
-      mv.addObject("pageTitle", "⚠error");
       mv.addObject("refresh", "2;url=form");
-      mv.addObject("contentUrl", "LoginFail.jsp");
+      mv.addObject("contentUrl", "auth/LoginFail.jsp");
       mv.setViewName("template1");
     }
     return mv;

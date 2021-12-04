@@ -35,7 +35,6 @@ public class UserController {
   public ModelAndView form() {
     ModelAndView mv = new ModelAndView();
 
-    mv.addObject("pageTitle", "📝join");
     mv.addObject("contentUrl", "user/UserForm.jsp");
     mv.setViewName("template1");    
 
@@ -114,12 +113,12 @@ public class UserController {
     ModelAndView mv = new ModelAndView();
 
     User loginUser = (User) session.getAttribute("loginUser");
+    System.out.println(loginUser);
 
     if (loginUser == null) {
       Exception error = new Exception("로그인한 회원 없음!");
-      mv.addObject("pageTitle", "페이지 오류");
       mv.addObject("error", error);
-      mv.addObject("contentUrl", "../error.jsp");
+      mv.addObject("contentUrl", "error.jsp");
       mv.setViewName("template1");
       return mv;
     } 
@@ -134,9 +133,8 @@ public class UserController {
 
     } else {
       Exception error = new Exception("getNo()와 일치하는 회원 없음!");
-      mv.addObject("pageTitle", "페이지 오류");
       mv.addObject("error", error);      
-      mv.addObject("contentUrl", "../error.jsp");
+      mv.addObject("contentUrl", "error.jsp");
       mv.setViewName("template1");
     }
     return mv;
@@ -150,9 +148,8 @@ public class UserController {
 
     if (loginPer == null) {
       Exception error = new Exception("로그인한 회원 없음!");
-      mv.addObject("pageTitle", "페이지 오류");
       mv.addObject("error", error);
-      mv.addObject("contentUrl", "../error.jsp");
+      mv.addObject("contentUrl", "error.jsp");
       mv.setViewName("template1");
       return mv;
     } 
@@ -168,8 +165,7 @@ public class UserController {
     } else {
       Exception error = new Exception("getNo()와 일치하는 회원 없음!");
       mv.addObject("error", error);
-      mv.addObject("pageTitle", "페이지 오류");
-      mv.addObject("contentUrl", "../error.jsp");
+      mv.addObject("contentUrl", "error.jsp");
       mv.setViewName("template1");      
     }
     return mv;
@@ -184,8 +180,7 @@ public class UserController {
     if (oldUser == null) {
       Exception error = new Exception("getNo()와 일치하는 회원 없음!");
       mv.addObject("error", error);
-      mv.addObject("pageTitle", "페이지 오류");
-      mv.addObject("contentUrl", "../error.jsp");
+      mv.addObject("contentUrl", "error.jsp");
       mv.setViewName("template1"); 
     } 
 

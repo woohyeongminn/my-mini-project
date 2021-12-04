@@ -19,7 +19,7 @@
    height:100px;
    position:absolute;
    bottom:0;
-   text-align: center;
+   text-align: left;
    color: black;
  } 
 </style>

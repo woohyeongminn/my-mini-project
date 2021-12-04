@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
+    pageEncoding="UTF-8"
+    trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<style>
+  a {
+  color:black;
+  } 
+</style>
 
-</body>
-</html>
+<br><br><br><br>
+    <div id="top">
+      <b style="font-size: 20px">LOGIN ERROR</b><br> 
+    </div>
+<hr><br>
+<b>등록된 회원이 아닙니다.</b>
+<br><hr>
