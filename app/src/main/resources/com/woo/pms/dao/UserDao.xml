@@ -19,6 +19,7 @@
   
   <sql id="select1">
     select
+      u.user_no,
       u.name,
       u.nickname,
       u.email,

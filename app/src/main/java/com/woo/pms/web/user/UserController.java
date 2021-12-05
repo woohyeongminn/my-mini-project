@@ -42,13 +42,13 @@ public class UserController {
   }
 
   @PostMapping("/user/add")
-  protected ModelAndView add(User user, Part photoFile, String[] telNo, String nick, String id, String site) throws Exception {
+  protected ModelAndView add(User user, Part photoFile) throws Exception {
 
-    String tel = telNo[0] + "-" + telNo[1] + "-" + telNo[2];
-    user.setTel(tel);
+    //    String tel = telNo[0] + "-" + telNo[1] + "-" + telNo[2];
+    //    user.setTel(tel);
 
-    user.setEmail(id + '@' + site);
-    user.setNickname(nick);
+    //    user.setEmail(id + '@' + site);
+    //    user.setNickname(nick);
 
     if (photoFile.getSize() > 0) {
       String filename = UUID.randomUUID().toString();
@@ -127,7 +127,6 @@ public class UserController {
 
     if (user != null) {
       mv.addObject("user", user);
-      mv.addObject("pageTitle", "📜 마이페이지");
       mv.addObject("contentUrl", "user/UserDetail.jsp");
       mv.setViewName("template1");
 
@@ -158,12 +157,11 @@ public class UserController {
 
     if (user != null) {
       mv.addObject("user", user);
-      mv.addObject("pageTitle", "📜 마이페이지");
       mv.addObject("contentUrl", "user/UserUpdate.jsp");
       mv.setViewName("template1");
 
     } else {
-      Exception error = new Exception("getNo()와 일치하는 회원 없음!");
+      Exception error = new Exception("번호와 일치하는 회원 없음!");
       mv.addObject("error", error);
       mv.addObject("contentUrl", "error.jsp");
       mv.setViewName("template1");      

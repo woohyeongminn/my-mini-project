@@ -29,7 +29,7 @@ public class AuthController {
   }
 
   @PostMapping("/auth/login")
-  public ModelAndView perLogin(
+  public ModelAndView login(
       String email,
       String password,
       String saveEmail,
