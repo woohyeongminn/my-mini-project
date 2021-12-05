@@ -26,6 +26,11 @@
 
  
 <title>hm-Woo</title>
+
+<c:if test="${not empty refresh}">
+  <meta http-equiv="Refresh" content="${refresh}">   
+</c:if>
+
   <jsp:include page="header.jsp"/>
     
   <body>

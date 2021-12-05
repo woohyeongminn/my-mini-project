@@ -14,7 +14,8 @@
   }
   a {
   color: black;
-  }
+  text-decoration:none
+   }
  </style>
   
    <div id="headtitle">
@@ -34,7 +35,7 @@
 
    <c:otherwise>
      <div id="headlist">
-      <a href="${contextPath}/app/user/detail" >mypage&nbsp;</a> 
+      <a href="${contextPath}/app/user/detail" >myinfo&nbsp;</a> 
       <a href="${contextPath}/app/auth/logout">logout&nbsp;</a> 
       <a href="${contextPath}/app/board/list">board</a>
      </div>   

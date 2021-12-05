@@ -7,9 +7,9 @@
  <a href=https://github.com/woohyeongminn/woo-project.git>
  <p> 
  https://github.com/woohyeongminn/woo-project.git</a><br>
- &nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (p)1111 seoul seocho gangnam-ro 22gil 39<br>
- &nbsp;&nbsp;☎&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 02) 1234 5678<br>  
- &nbsp;&nbsp;✉&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; woo@hmwoo.com
+ &nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (p)1111 seoul sungbukgu hwarang-ro 22gil 39<br>
+ &nbsp;&nbsp;☎&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 010) 4870 9134<br>  
+ &nbsp;&nbsp;✉&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; gudals.woo@gmail.com
  
  </p>
  </footer>

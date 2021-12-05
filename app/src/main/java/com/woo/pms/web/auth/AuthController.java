@@ -49,11 +49,10 @@ public class AuthController {
     response.addCookie(cookie);
 
     User user = userDao.findByEmailAndPassword(email, password);
-    System.out.println(user);
 
     ModelAndView mv = new ModelAndView();
 
-    if (user != null) {
+    if (user != null && user.getActivityState() == 1) {
       session.setAttribute("loginUser", user);
       mv.setViewName("redirect:../index");
 

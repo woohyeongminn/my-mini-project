@@ -1,11 +1,9 @@
 package com.woo.pms.web.user;
 
 import java.io.IOException;
-import java.util.UUID;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import com.woo.pms.dao.UserDao;
 import com.woo.pms.domain.User;
-import net.coobird.thumbnailator.ThumbnailParameter;
-import net.coobird.thumbnailator.Thumbnails;
-import net.coobird.thumbnailator.geometry.Positions;
-import net.coobird.thumbnailator.name.Rename;
 @RestController
 @Controller
 public class UserController {
@@ -42,57 +36,8 @@ public class UserController {
   }
 
   @PostMapping("/user/add")
-  protected ModelAndView add(User user, Part photoFile) throws Exception {
-
-    //    String tel = telNo[0] + "-" + telNo[1] + "-" + telNo[2];
-    //    user.setTel(tel);
-
-    //    user.setEmail(id + '@' + site);
-    //    user.setNickname(nick);
-
-    if (photoFile.getSize() > 0) {
-      String filename = UUID.randomUUID().toString();
-      photoFile.write(sc.getRealPath("/upload/user") + "/" + filename);
-      user.setPhoto(filename);
-
-      Thumbnails.of(sc.getRealPath("/upload/user") + "/" + filename)
-      .size(40, 40)
-      .outputFormat("jpg")
-      .crop(Positions.CENTER)
-      .toFiles(new Rename() {
-        @Override
-        public String apply(String name, ThumbnailParameter param) {
-          return name + "_40x40";
-        }
-      });
-
-      Thumbnails.of(sc.getRealPath("/upload/user") + "/" + filename)
-      .size(80, 80)
-      .outputFormat("jpg")
-      .crop(Positions.CENTER)
-      .toFiles(new Rename() {
-        @Override
-        public String apply(String name, ThumbnailParameter param) {
-          return name + "_80x80";
-        }
-      });
-
-      Thumbnails.of(sc.getRealPath("/upload/user") + "/" + filename)
-      .size(110, 110)
-      .outputFormat("jpg")
-      .crop(Positions.CENTER)
-      .toFiles(new Rename() {
-        @Override
-        public String apply(String name, ThumbnailParameter param) {
-          return name + "_110x110";
-        }
-      });
-
-    } else {
-
-      user.setPhoto("perProfile");
-    }
-
+  protected ModelAndView add(User user) throws Exception {
+    user.setActivityState(User.ACTIVE);
     userDao.insert(user);
     sqlSessionFactory.openSession().commit();
 
@@ -113,7 +58,6 @@ public class UserController {
     ModelAndView mv = new ModelAndView();
 
     User loginUser = (User) session.getAttribute("loginUser");
-    System.out.println(loginUser);
 
     if (loginUser == null) {
       Exception error = new Exception("로그인한 회원 없음!");
@@ -139,106 +83,74 @@ public class UserController {
     return mv;
   }  
 
-  @RequestMapping("/user/updateform")
-  public ModelAndView updateForm(HttpSession session) throws Exception {
+  @RequestMapping("/user/update/nickname")
+  protected ModelAndView updateNickname(HttpSession session, String nickname) throws Exception {
     ModelAndView mv = new ModelAndView();
 
-    User loginPer = (User) session.getAttribute("loginUser");
+    User loginUser = (User) session.getAttribute("loginUser");
 
-    if (loginPer == null) {
-      Exception error = new Exception("로그인한 회원 없음!");
-      mv.addObject("error", error);
-      mv.addObject("contentUrl", "error.jsp");
-      mv.setViewName("template1");
-      return mv;
-    } 
-
-    User user = userDao.findByNo(loginPer.getNo());
-
-    if (user != null) {
-      mv.addObject("user", user);
-      mv.addObject("contentUrl", "user/UserUpdate.jsp");
-      mv.setViewName("template1");
-
-    } else {
-      Exception error = new Exception("번호와 일치하는 회원 없음!");
-      mv.addObject("error", error);
-      mv.addObject("contentUrl", "error.jsp");
-      mv.setViewName("template1");      
-    }
-    return mv;
-  }
-
-  @RequestMapping("/user/update")
-  protected ModelAndView update(User user, Part photoFile, String nick) throws Exception {
-    ModelAndView mv = new ModelAndView();
-
-    User oldUser = userDao.findByNo(user.getNo());
-
-    if (oldUser == null) {
+    if (loginUser == null) {
       Exception error = new Exception("getNo()와 일치하는 회원 없음!");
       mv.addObject("error", error);
       mv.addObject("contentUrl", "error.jsp");
       mv.setViewName("template1"); 
     } 
 
-    if (photoFile.getSize() > 0) {
-      String filename = UUID.randomUUID().toString();
-      photoFile.write(sc.getRealPath("/upload/user") + "/" + filename);
-      user.setPhoto(filename);
+    loginUser.setNickname(nickname);
 
-      Thumbnails.of(sc.getRealPath("/upload/user") + "/" + filename)
-      .size(40, 40)
-      .outputFormat("jpg")
-      .crop(Positions.CENTER)
-      .toFiles(new Rename() {
-        @Override
-        public String apply(String name, ThumbnailParameter param) {
-          return name + "_40x40";
-        }
-      });
-
-      Thumbnails.of(sc.getRealPath("/upload/user") + "/" + filename)
-      .size(80, 80)
-      .outputFormat("jpg")
-      .crop(Positions.CENTER)
-      .toFiles(new Rename() {
-        @Override
-        public String apply(String name, ThumbnailParameter param) {
-          return name + "_80x80";
-        }
-      });
-
-      Thumbnails.of(sc.getRealPath("/upload/user") + "/" + filename)
-      .size(80, 80)
-      .outputFormat("jpg")
-      .crop(Positions.CENTER)
-      .toFiles(new Rename() {
-        @Override
-        public String apply(String name, ThumbnailParameter param) {
-          return name + "_110x110";
-        }
-      });
-
-      user.setPhoto(filename);
-      user.setNickname(nick);
-      user.setJoinDate(oldUser.getJoinDate());
-
-    } else {
-      // 기존 정보로 
-      user.setPhoto(oldUser.getPhoto());
-      user.setNickname(nick);
-      user.setJoinDate(oldUser.getJoinDate());
-    }
-
-    userDao.updateNickname(user);
-    userDao.updatePassword(user);
-    userDao.updatePhoto(user);
+    userDao.updateNickname(loginUser);
     sqlSessionFactory.openSession().commit();
 
-    mv.setViewName("redirect:detail");
+    mv.setViewName("redirect:../detail");
     return mv;
-  }  
+  }
+
+  @RequestMapping("/user/update/password")
+  protected ModelAndView updatePassword(HttpSession session, String password) throws Exception {
+    ModelAndView mv = new ModelAndView();
+
+    User loginUser = (User) session.getAttribute("loginUser");
+
+    if (loginUser == null) {
+      Exception error = new Exception("getNo()와 일치하는 회원 없음!");
+      mv.addObject("error", error);
+      mv.addObject("contentUrl", "error.jsp");
+      mv.setViewName("template1"); 
+    } 
+
+    loginUser.setPassword(password);
+
+    userDao.updatePassword(loginUser);
+    sqlSessionFactory.openSession().commit();
+
+    mv.setViewName("redirect:../detail");
+    return mv;
+  }
+
+  @RequestMapping("/user/delete")
+  protected ModelAndView delete(HttpSession session, String password) throws Exception {
+    ModelAndView mv = new ModelAndView();
+
+    User loginUser = (User) session.getAttribute("loginUser");
+
+    if (loginUser == null) {
+      Exception error = new Exception("getNo()와 일치하는 회원 없음!");
+      mv.addObject("error", error);
+      mv.addObject("contentUrl", "error.jsp");
+      mv.setViewName("template1"); 
+    } 
+
+    System.out.println(loginUser.getActivityState());
+    loginUser.setActivityState(User.WAITING);
+    System.out.println(loginUser.getActivityState());
+
+    userDao.updateActive(loginUser);
+    sqlSessionFactory.openSession().commit();
+
+    session.invalidate();
+    mv.setViewName("redirect:../index");
+    return mv;
+  }
 
 
 }

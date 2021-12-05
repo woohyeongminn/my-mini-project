@@ -9,8 +9,9 @@ public interface UserDao {
   void insert(User user) throws Exception;
 
   void updateNickname(User user) throws Exception;
-  void updatePhoto(User user) throws Exception;
   void updatePassword(User user) throws Exception;
+
+  //  탈퇴시 활동 상태만 변경 된다.
   void updateActive(User user) throws Exception;
 
   List<User> findAll() throws Exception;

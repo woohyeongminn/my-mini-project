@@ -17,13 +17,17 @@
 
 <form action="login" method="post">
   <div id="all">
-    <label>email</label>
-	  <input type="email" name="email" style="border:0 solid black">
+    <label>email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+	  <input type="email" name="email" value="${cookie.email.value}">
 	  <br>
-	  <label>password</label>
-	  <input type="password" name="password" style="border:0 solid black">
+	  <label>password&nbsp;</label>
+	  <input type="password" name="password">
 	  <br>
-	  <br>  
+    <div class="form-check">
+       <span>remember</span>
+       <input id="f-saveEmail" type="checkbox" class="rememberCheck" name="saveEmail" ${not empty cookie.email ? "checked":""}>
+    </div>
+    <br>	    
 	  <button type="submit" style="background-color:white">login</button> 
   </div>
 </form>

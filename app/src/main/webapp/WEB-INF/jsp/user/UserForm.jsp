@@ -22,45 +22,67 @@
 <body>
   <form action='add' name='userInfo' method='post' enctype="multipart/form-data" onsubmit="return checkValue()">
     <div class="all-content"> 
-      
-      <div id="mp">
-        <label id='f-photo' for='f-photo' class="col-sm-2 col-form-label">사진</label>
-        <input id='f-photo' type='file' name='photoFile' /><br>
-        <p>*미선택시 기본이미지로 등록됩니다.</p>
-      </div>    
     
 	    <div class="ue">
-		    <label for='f-email' class="col-sm-2 col-form-label">email</label>
-	      <input id='i-email' type='email' name='email' placeholder="*" />
+		    <label for='f-email'>email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+	      <input id='i-email' type='email' name='email'/>
 	    </div> 
 	    
 	    <div class="up">
-	      <label for='f-password' class="col-sm-2 col-form-label">password</label>
-	      <input id='i-password' type='password' name='password' placeholder="*" />
+	      <label for='f-password'>password&nbsp;</label>
+	      <input id='i-password' type='password' name='password'/>
 	    </div>     
 	
 	    <div class="un">
-	      <label for='f-name' class="col-sm-2 col-form-label">name</label>
-	      <input id='i-name' type='text' name='name' placeholder="*" />
+	      <label for='f-name'>name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+	      <input id='i-name' type='text' name='name'/>
 	    </div>
 	    
 	    <div class="unn">
-	      <label for='f-nickname' class="col-sm-2 col-form-label">nickname</label>
-	      <input id='i-nickname' type='text' name='nickname' placeholder="*" />
+	      <label for='f-nickname'>nickname&nbsp;</label>
+	      <input id='i-nickname' type='text' name='nickname'/>
 	    </div>    
 
 	    <div class="ut">
-	      <label for='f-tel' class="col-sm-2 col-form-label">tel</label>
-	      <input id='i-tel' type='tel' name='tel' placeholder="*" />
+	      <label for='f-tel'>tel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+	      <input id='i-tel' type='tel' name='tel'/>
 	    </div>    
     </div>
     <br>
     
     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-       <button id="x-add-btn" class="btn" type="submit" onclick="joinPopup()" >join</button> 
+       <button class="btn" type="submit">join</button>
     </div>   
   </form>
   <br><hr>
 </body>
+
+<script>
+ function checkValue() {
+	 
+	 var form = document.userInfo;
+	 
+   if (!form.email.value) {
+	      alert("please enter your email")
+	      return false;
+	   }
+   if (!form.password.value) {
+	      alert("please enter your password")
+	      return false;
+	   }   
+	 if (!form.name.value) {
+		  alert("please enter your name")
+		  return false;
+	 }
+   if (!form.nickname.value) {
+	      alert("please enter your nickname")
+	      return false;
+	   }	 
+   if (!form.tel.value) {
+	      alert("please enter your tel")
+	      return false;
+	   } 
+ }
+</script>
 
      

@@ -14,5 +14,5 @@
       <b style="font-size: 20px">LOGIN ERROR</b><br> 
     </div>
 <hr><br>
-<b>등록된 회원이 아닙니다.</b>
-<br><hr>
+<b>NOT A REGISTERED MEMBER</b>
+<br><br><hr>

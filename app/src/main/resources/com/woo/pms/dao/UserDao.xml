@@ -11,7 +11,6 @@
     <result column="nickname" property="nickname"/>
     <result column="email" property="email"/>
     <result column="password" property="password"/>
-    <result column="photo" property="photo"/>
     <result column="tel" property="tel"/>
     <result column="join_dt" property="joinDate"/>
     <result column="active" property="activityState"/>
@@ -23,7 +22,6 @@
       u.name,
       u.nickname,
       u.email,
-      u.photo,
       u.tel,
       u.join_dt,
       u.active
@@ -33,8 +31,8 @@
 
 <!-- ======================================================================= -->  
   <insert id="insert" parameterType="user">
-    insert into user(name,nickname,email,password,tel,photo)
-    values(#{name},#{nickname},#{email},password(#{password}),#{tel},#{photo})
+    insert into user(name,nickname,email,password,tel)
+    values(#{name},#{nickname},#{email},password(#{password}),#{tel})
   </insert>
   
   <update id="updateNickname" parameterType="user">
@@ -44,16 +42,9 @@
       user_no=#{no}    
   </update>
   
-  <update id="updatePhoto" parameterType="user">
-    update user set
-      photo=#{photo}
-    where
-      user_no=#{no}    
-  </update>  
-
   <update id="updatePassword" parameterType="user">
     update user set
-      password=password(#{photo})
+      password=password(#{password})
     where
       user_no=#{no}    
   </update> 
@@ -66,7 +57,7 @@
       user_no=#{no}    
   </update> 
 
-<!-- 닉네임 중복 확인하기  -->
+<!-- =========================닉네임 중복확인===================== -->
 	<select id="nickOverlap" resultType="string">
 	  select
 	    nickname
@@ -75,7 +66,8 @@
 	  where
 	    nickname = #{nickname}
 	</select>   
-	
+
+<!-- =========================정보 찾기===================== -->	
 	<select id="findAll" resultMap="UserMap">
    <include refid="select1"/>
   </select>
@@ -103,7 +95,6 @@
    where
      name = #{name} and email = #{email}
   </select>         	 
-
 
 </mapper>
 

@@ -2,22 +2,19 @@ package com.woo.pms.domain;
 
 import java.sql.Date;
 
-public class Board {
+public class Comment {
 
   private int no;
-  private String title;
-  private String content;
+  private String comment;
   private User writer;
-  private int viewCount;
   private int likeCount;
   private int hateCount;
   private Date createDate;
 
   @Override
   public String toString() {
-    return "Board [no=" + no + ", title=" + title + ", content=" + content + ", writer=" + writer
-        + ", viewCount=" + viewCount + ", likeCount=" + likeCount + ", hateCount=" + hateCount
-        + ", createDate=" + createDate + "]";
+    return "Comment [no=" + no + ", comment=" + comment + ", writer=" + writer + ", likeCount="
+        + likeCount + ", hateCount=" + hateCount + ", createDate=" + createDate + "]";
   }
 
   public int getNo() {
@@ -28,20 +25,12 @@ public class Board {
     this.no = no;
   }
 
-  public String getTitle() {
-    return title;
+  public String getComment() {
+    return comment;
   }
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public String getContent() {
-    return content;
-  }
-
-  public void setContent(String content) {
-    this.content = content;
+  public void setComment(String comment) {
+    this.comment = comment;
   }
 
   public User getWriter() {
@@ -50,14 +39,6 @@ public class Board {
 
   public void setWriter(User writer) {
     this.writer = writer;
-  }
-
-  public int getViewCount() {
-    return viewCount;
-  }
-
-  public void setViewCount(int viewCount) {
-    this.viewCount = viewCount;
   }
 
   public int getLikeCount() {
@@ -83,4 +64,6 @@ public class Board {
   public void setCreateDate(Date createDate) {
     this.createDate = createDate;
   }
+
+
 }
