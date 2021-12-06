@@ -25,7 +25,7 @@
     
 	    <div class="ue">
 		    <label for='f-email'>email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-	      <input id='i-email' type='email' name='email'/>
+	      <input id='i-email' type='email' name='email' style="margin-left: 2px;"/>
 	    </div> 
 	    
 	    <div class="up">

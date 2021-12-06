@@ -15,7 +15,7 @@
 
 <br><br><br><br>
     <div id="top">
-      <b style="font-size: 20px">JOIN</b><br> 
+      <b style="font-size: 20px">MY INFO</b><br> 
     </div>
 <hr><br>
 
@@ -67,7 +67,7 @@
 
     </div>
     <br>
-  <br><hr>
+    <br><hr>
 </body>
 
 

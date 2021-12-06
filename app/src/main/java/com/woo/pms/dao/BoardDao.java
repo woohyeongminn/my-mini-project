@@ -18,14 +18,4 @@ public interface BoardDao {
 
   List<Board> findAll(Map<String,Object> params) throws Exception;
   int count() throws Exception;
-
-  List<Board> findMyAll(Map<String,Object> params) throws Exception;
-  int myCount(int userNo) throws Exception;
-
-  List<Board> findAllByKeyword(Map<String,Object> params) throws Exception;
-  int keywordCount(Map<String,Object> params) throws Exception;
-
-  List<Board> findMyAllByKeyword(Map<String,Object> params) throws Exception;
-  int myKeywordCount(Map<String,Object> params) throws Exception;
-
 }

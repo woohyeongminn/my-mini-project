@@ -18,7 +18,7 @@
 <form action="login" method="post">
   <div id="all">
     <label>email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-	  <input type="email" name="email" value="${cookie.email.value}">
+	  <input type="email" name="email" value="${cookie.email.value}" style="margin-left: 2px;">
 	  <br>
 	  <label>password&nbsp;</label>
 	  <input type="password" name="password">
