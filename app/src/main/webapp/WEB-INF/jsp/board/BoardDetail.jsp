@@ -48,6 +48,7 @@
 				      <textarea id="title"  class="form-control" name="title" placeholder="${board.title}" cols="50" rows="1" ></textarea>
 				      <br>
 				      <br>
+				      
 				      <input id="f-no" type="hidden" value="${board.no}"/>
 				    
 				      <label for="f-content" class="form-label" style="margin-right: 338px;">content</label>
