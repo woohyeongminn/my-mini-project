@@ -60,7 +60,7 @@ public class UserController {
     User loginUser = (User) session.getAttribute("loginUser");
 
     if (loginUser == null) {
-      Exception error = new Exception("로그인한 회원 없음!");
+      Exception error = new Exception("login error!");
       mv.addObject("error", error);
       mv.addObject("contentUrl", "error.jsp");
       mv.setViewName("template1");
@@ -75,7 +75,7 @@ public class UserController {
       mv.setViewName("template1");
 
     } else {
-      Exception error = new Exception("getNo()와 일치하는 회원 없음!");
+      Exception error = new Exception("번호와 일치하는 회원 없음!");
       mv.addObject("error", error);      
       mv.addObject("contentUrl", "error.jsp");
       mv.setViewName("template1");
@@ -90,7 +90,7 @@ public class UserController {
     User loginUser = (User) session.getAttribute("loginUser");
 
     if (loginUser == null) {
-      Exception error = new Exception("getNo()와 일치하는 회원 없음!");
+      Exception error = new Exception("login error!");
       mv.addObject("error", error);
       mv.addObject("contentUrl", "error.jsp");
       mv.setViewName("template1"); 
@@ -134,7 +134,7 @@ public class UserController {
     User loginUser = (User) session.getAttribute("loginUser");
 
     if (loginUser == null) {
-      Exception error = new Exception("getNo()와 일치하는 회원 없음!");
+      Exception error = new Exception("login error!");
       mv.addObject("error", error);
       mv.addObject("contentUrl", "error.jsp");
       mv.setViewName("template1"); 

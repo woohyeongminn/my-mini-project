@@ -47,17 +47,19 @@
           <th>create</th>
         </tr>  
       </thead>
+      
       <tbody>
-        <c:forEach items="${baordList}" var="board">
+        <c:forEach items="${boardList}" var="board">
               <tr>
                 <td>${board.no}.</td>
                 <td><a href='detail?no=${board.no}'>${board.title}</a></td>
                 <td>${board.writer.nickname}</td>
-                <td>${board.veiwCount}</td>
+                <td>${board.viewCount}</td>
                 <td>${board.createDate}</td>
               </tr>
         </c:forEach>
       </tbody>
+
     </table>
   </div>
     
@@ -73,7 +75,7 @@
     <c:choose>
       <c:when test="${not empty loginUser}">
         <form action="form" method="get">
-          <button class="btn" type="submit">registration</button>
+          <button class="btn" type="submit" >registration</button>
         </form>
       </c:when>
       

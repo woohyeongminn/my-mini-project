@@ -18,59 +18,67 @@
   }
   .btn {
     line-height: 14px;
+    background-color:white
   }
   a {
   color: black;
   }  
 </style>
-<div class="all-content">
-<br>
-      <br>../
-      <label for="f-title" class="form-label">title</label>
-      <input id="title"  type="text" class="form-control" name="askTitle" placeholder="*please write title"></input>
+<br><br>
+    <div id="top">
+      <b style="font-size: 20px">BOARD</b><br> 
+    </div>
     
-      <label for="f-content" class="form-label">content</label>
-      <textarea id="content"  class="form-control" id="f-content" name="askContent" placeholder="*please write content" cols="50" rows="8"></textarea>
-     
-    <hr><br><div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  <form id="all" action="add" method="post">
-     <button class="btn btn-outline-dark" type="submit" value="등록" onclick="addPopup()" >registration</button>
-  </form>
-
-  <form id="all" action="" method="post">
-     <button class="btn btn-outline-dark" type="submit" value="등록" onclick="addPopup()" >registration</button>
-  </form>    
-   </div> 
-</div>
-<script>
-var fStatus = document.querySelector("#f-status");
-var passwordRow = document.querySelector("#passwordRow");
-
-passwordRow.style["display"] = "none";
-
-fStatus.addEventListener("input", function() {
-  if (fStatus.value == "2") {
-    passwordRow.style["display"] = "";
-  } else {
-     passwordRow.style["display"] = "none";
-  }
-});
-</script>
+    <div class="all-content">
+			<form id="member-form" action='add' name='perInfo' method='post' enctype="multipart/form-data" onsubmit="return checkValue()">
+      <hr>    
+      <br>
+      <label for="f-title" style="margin-right: 360px;">title</label>
+      <br>
+      <textarea id="title"  class="form-control" name="title" placeholder="*please write title" cols="50" rows="1"></textarea>
+      <br>
+      <br>
+    
+      <label for="f-content" class="form-label" style="margin-right: 338px;">content</label>
+      <br>
+      <textarea id="content"  class="form-control" id="f-content" name="content" placeholder="*please write content" cols="50" rows="8"></textarea>
+      <br>
+	    <br>
+	        
+ 
+      <div id="mp">
+        <label id='f-photo' for='f-photo' class="col-sm-2 col-form-label"></label>
+        <input id='f-photo' type='file' name='photoFile' /><br>
+      </div>
+	    <hr>
+			  <button class="btn " type="submit" onclick="addPopup()" >registration</button>
+			  <button type="button" class="btn" onclick="backPopup()">back</button>
+			</form>
+    </div> 
 
 <script>  
-  document.querySelector("#all").onsubmit = () => {
+	
+ document.querySelector("#all").onsubmit = () => {
+  
   if (document.querySelector("#title").value == "") {
-    alert("**제목을 입력해주세요.")
+    alert("**please enter the title.")
     return false;
   } else if (document.querySelector("#content").value == "") {
-    alert("**내용을 입력해주세요.")
+    alert("**please enter the content.")
     return false;
+  } else {
+	  function addPopup() { 
+		  alert("the post has been registered.")
+	    }
   }
 };
-
-function addPopup() { 
-    alert("")
-    }
+		
+function backPopup() {
+	alert("registration has been canceled.")
+  var link = 'http://localhost:8080/woo/app/board/list';
+	location.href=link;
+}
+  
 </script>
 
 

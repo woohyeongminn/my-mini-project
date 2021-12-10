@@ -3,6 +3,7 @@
     trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="https://static.msscdn.net/mfile_outsrc/js/vendor/jquery-1.11.1.min.js?20160201"></script>
@@ -20,8 +21,6 @@
 <hr><br>
 
 <body>
-
-    <div class="all-content"> 
 
       <div class="uj">
         <label for='f-date'>date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
@@ -53,22 +52,24 @@
 
 		  <form action='update/password' name='userInfo' method='post'>
 		      <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-		        <label for='f-password'>password</label>
+		        <label for='f-password' style="margin-left: 2px;">password</label>
 		        <input id='i-password' type='password' name='password'/>
             <button class="btn" type="submit">update</button>
 		      </div>
 		  </form>
 		  <br>
+
       <form action='delete' name='userInfo' method='post'>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
             <button class="btn" type="submit">secession</button>
           </div>
-      </form>		  
+      </form>	
+      <hr><br>	  
+<script>
 
-    </div>
-    <br>
-    <br><hr>
-</body>
-
+function addCalendar(obj) { 
+    alert("membership cancellation has been successful.")
+    }
+</script>
 
      

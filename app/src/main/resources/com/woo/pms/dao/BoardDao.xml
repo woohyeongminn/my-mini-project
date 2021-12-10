@@ -28,6 +28,7 @@
        b.content,
        b.view_count,
        b.registered_dt,
+       u.user_no,        
        u.nickname,
        u.active
  </sql>   

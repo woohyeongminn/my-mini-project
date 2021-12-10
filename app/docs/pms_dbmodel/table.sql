@@ -30,7 +30,7 @@ CREATE TABLE user (
   email    VARCHAR(40)  NOT NULL COMMENT '이메일', -- 이메일
   password VARCHAR(255) NOT NULL COMMENT '암호', -- 암호
   tel      VARCHAR(30)  NOT NULL COMMENT '전화번호', -- 전화번호
-  join_dt  DATE         NOT NULL DEFAULT curdate() COMMENT 'join_dt', -- join_dt
+  join_dt  DATE         NOT NULL DEFAULT curdate() COMMENT '가입일', -- 가입일
   active   INTEGER      NOT NULL DEFAULT 1 COMMENT '활동상태' -- 활동상태
 )
 COMMENT '유저';
@@ -50,7 +50,7 @@ CREATE TABLE board (
   board_no      INTEGER      NOT NULL COMMENT '게시판번호', -- 게시판번호
   title         VARCHAR(255) NOT NULL COMMENT '제목', -- 제목
   content       TEXT         NOT NULL COMMENT '내용', -- 내용
-  registered_dt DATE         NOT NULL DEFAULT 0 COMMENT '등록일', -- 등록일
+  registered_dt DATE         NOT NULL DEFAULT curdate() COMMENT '등록일', -- 등록일
   view_count    INTEGER      NOT NULL DEFAULT 0
    COMMENT '조회수', -- 조회수
   user_no       INTEGER      NOT NULL COMMENT '유저번호' -- 유저번호
@@ -119,7 +119,8 @@ CREATE TABLE comment (
   comment_no INTEGER NOT NULL COMMENT '댓글번호', -- 댓글번호
   comment    TEXT    NOT NULL COMMENT '댓글', -- 댓글
   board_no   INTEGER NOT NULL COMMENT '게시판번호', -- 게시판번호
-  user_no    INTEGER NOT NULL COMMENT '유저번호' -- 유저번호
+  user_no    INTEGER NOT NULL COMMENT '유저번호', -- 유저번호
+  create_dt  DATE    NULL     DEFAULT curdate() COMMENT '작성일' -- 작성일
 )
 COMMENT '댓글';
 

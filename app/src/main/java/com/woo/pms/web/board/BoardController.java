@@ -2,6 +2,7 @@ package com.woo.pms.web.board;
 
 import java.util.HashMap;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.woo.pms.dao.BoardDao;
 import com.woo.pms.domain.Board;
+import com.woo.pms.domain.User;
 
 @Controller
 public class BoardController {
@@ -30,12 +32,22 @@ public class BoardController {
   }
 
   @PostMapping("/board/add")
-  protected ModelAndView add(Board board) throws Exception {
-    boardDao.insert(board);
-    sqlSessionFactory.openSession().commit();
-
+  protected ModelAndView add(Board board, HttpSession session) throws Exception {
     ModelAndView mv = new ModelAndView();
-    mv.setViewName("redirect:list");
+
+    User writer = (User) session.getAttribute("loginUser");
+
+    if (writer != null) {
+      board.setWriter(writer);
+      boardDao.insert(board);
+      sqlSessionFactory.openSession().commit();
+      mv.setViewName("redirect:list");
+    } else {
+      Exception error = new Exception("login error!");
+      mv.addObject("error", error);
+      mv.addObject("contentUrl", "error.jsp");
+      mv.setViewName("template1"); 
+    }
     return mv;
   }
 
@@ -64,7 +76,7 @@ public class BoardController {
     List<Board> boardList = boardDao.findAll(params);
 
     if (boardList.isEmpty()) {
-      Exception error = new Exception("boardDao.findAll");
+      Exception error = new Exception("board-list error!");
       mv.addObject("error", error);
       mv.addObject("contentUrl", "error.jsp");
       mv.setViewName("template1");
@@ -80,6 +92,36 @@ public class BoardController {
     mv.setViewName("template1");
 
     return mv;
+  }
 
+  @RequestMapping("/board/detail")
+  public ModelAndView detail(int no) throws Exception {
+    ModelAndView mv = new ModelAndView();
+
+    Board board = boardDao.findByNo(no);
+
+    boardDao.updateViewCount(no);
+    sqlSessionFactory.openSession().commit();
+
+    mv.addObject("board", board);
+    mv.addObject("contentUrl", "board/BoardDetail.jsp");
+    mv.setViewName("template1");
+
+    return mv;
+  }
+
+  @RequestMapping("/board/update")
+  public ModelAndView updateForm(Board board) throws Exception {
+    ModelAndView mv = new ModelAndView();
+
+    boardDao.updateTitle(board);
+    boardDao.updateContent(board);
+    sqlSessionFactory.openSession().commit();
+
+    System.out.println(board);
+
+    mv.setViewName("redirect:detail"+"?no=" + board.getNo());
+
+    return mv;
   }
 }
