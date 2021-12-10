@@ -20,7 +20,7 @@
   
    <div id="headtitle">
     <a href="${contextPath}/app/index">
-     <b>hm-Woo&nbsp;studio</b>
+     <b>hyeonminWoo&nbsp;studio</b>
     </a>  
    </div>
  

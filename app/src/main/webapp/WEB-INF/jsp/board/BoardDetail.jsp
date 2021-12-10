@@ -3,7 +3,7 @@
     trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <style>
-  .all-content {
+  #all-content {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
@@ -29,7 +29,7 @@
       <b style="font-size: 20px">BOARD</b><br> 
     </div>
     
-    <div class="all-content">
+    <div id="all-content">
         <c:choose>
           <c:when test="${loginUser.no == board.writer.no}">
 	          <form id="board-form" action='update' name='boardInfo' method='post' enctype="multipart/form-data" onsubmit="return checkValue()">
@@ -48,6 +48,7 @@
 				      <textarea id="title"  class="form-control" name="title" placeholder="${board.title}" cols="50" rows="1" ></textarea>
 				      <br>
 				      <br>
+				      <input id="f-no" type="hidden" value="${board.no}"/>
 				    
 				      <label for="f-content" class="form-label" style="margin-right: 338px;">content</label>
 				      <br>
@@ -64,8 +65,8 @@
 				      <hr>  
 				                
 			        <button class="btn " type="submit" onclick="updatePopup()" >update</button>
-			        <button class="btn " type="submit" onclick="deletePopup()" >delete</button>
-			        <button type="button" class="btn" onclick="backPopup()">back</button>
+			        <button class="btn " type="button"  onclick="location.href='delete?no=${board.no}'" >delete</button>
+			        <button class="btn"  type="button" onclick="backPopup()">back</button>
 			      </form>
           </c:when>
           
@@ -115,9 +116,10 @@
     </div> 
 
 <script>  
+var no = document.querySelector("#f-no");
   
- document.querySelector("#all").onsubmit = () => {
-  
+function updatePopup() { 
+ document.querySelector("#all-content").onsubmit = () => {
   if (document.querySelector("#title").value == "") {
     alert("**please enter the title.")
     return false;
@@ -125,15 +127,10 @@
     alert("**please enter the content.")
     return false;
   } else {
-    function updatePopup() { 
-      alert("the post has been registered.")
-      }
+    	alert("has been changed.")
   }
+ }
 };
-
-function updatePopup() {
-  alert("has been changed.")
-}
 
 function backPopup() {
   var link = 'http://localhost:8080/woo/app/board/list';

@@ -111,7 +111,7 @@ public class BoardController {
   }
 
   @RequestMapping("/board/update")
-  public ModelAndView updateForm(Board board) throws Exception {
+  public ModelAndView updat(Board board) throws Exception {
     ModelAndView mv = new ModelAndView();
 
     boardDao.updateTitle(board);
@@ -124,4 +124,17 @@ public class BoardController {
 
     return mv;
   }
+
+  @RequestMapping("/board/delete")
+  public ModelAndView delete(int no) throws Exception {
+    ModelAndView mv = new ModelAndView();
+
+    boardDao.delete(no);
+    sqlSessionFactory.openSession().commit();
+    mv.setViewName("redirect:list");
+
+    return mv;
+  }
+
+
 }

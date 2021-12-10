@@ -3,8 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <br><br><br>
-<b>
- mini project main page
+<b style="color:blue">
+my first mini project
 </b>
-
+<br><br>
+<b>
+MAIN PAGE 
+</b>
 
