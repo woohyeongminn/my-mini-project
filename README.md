@@ -1,5 +1,3 @@
 
-
-# woo-project
-# mini-project
+# my first mini-project
 # board
