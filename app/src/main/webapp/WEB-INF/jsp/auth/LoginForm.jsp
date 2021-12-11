@@ -28,8 +28,18 @@
        <input id="f-saveEmail" type="checkbox" class="rememberCheck" name="saveEmail" ${not empty cookie.email ? "checked":""}>
     </div>
     <br>	    
-	  <button type="submit" style="background-color:white">login</button> 
+	  <button type="submit" style="background-color:white">login</button>
+	  <button type="button" style="background-color:white" onclick="findInfo()">find</button> 
   </div>
 </form>
 
 <br><hr>
+
+<script>
+
+function findInfo() {
+	  var link = 'http://localhost:8080/woo/app/board/list';
+	  location.href=link;
+	}
+
+</script>

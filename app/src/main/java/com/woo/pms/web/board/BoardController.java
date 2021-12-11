@@ -11,13 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.woo.pms.dao.BoardDao;
+import com.woo.pms.dao.CommentDao;
 import com.woo.pms.domain.Board;
+import com.woo.pms.domain.Comment;
 import com.woo.pms.domain.User;
 
 @Controller
 public class BoardController {
 
   @Autowired BoardDao boardDao;
+  @Autowired CommentDao commentDao;
   @Autowired SqlSessionFactory sqlSessionFactory;
 
   @RequestMapping("/board/form")
@@ -99,11 +102,13 @@ public class BoardController {
     ModelAndView mv = new ModelAndView();
 
     Board board = boardDao.findByNo(no);
+    List<Comment> commentList = commentDao.findAllByNo(no);
 
     boardDao.updateViewCount(no);
     sqlSessionFactory.openSession().commit();
 
     mv.addObject("board", board);
+    mv.addObject("commentList", commentList);
     mv.addObject("contentUrl", "board/BoardDetail.jsp");
     mv.setViewName("template1");
 

@@ -57,6 +57,8 @@
 				      <input type ='hidden' name='no' value='${board.no}'>
 				      <br>
 				      <br>
+				      
+				      
 				          
 				 
 				      <div id="mp">
@@ -64,7 +66,13 @@
 				        <input id='f-photo' type='file' name='photoFile' /><br>
 				      </div>
 				      <hr>  
-				                
+
+	            <c:forEach items="${commentList}" var="comment">
+	              <p>${comment.writer.nickname}</p>
+	              <p>${comment.comment}</p>
+	              <p>${comment.createDate}</p>
+	            </c:forEach>	
+	            			                
 			        <button class="btn " type="submit" onclick="updatePopup()" >update</button>
 			        <button class="btn " type="button"  onclick="location.href='delete?no=${board.no}'" >delete</button>
 			        <button class="btn"  type="button" onclick="backPopup()">back</button>
@@ -104,16 +112,30 @@
             <textarea id="content"  class="form-control" id="f-content" name="content" placeholder="${board.content}" cols="50" rows="8" readonly></textarea>
             <br>
             <br>
-                
-       
+            
             <div id="mp">
               <label id='f-photo' for='f-photo' class="col-sm-2 col-form-label"></label>
               <input id='f-photo' type='file' name='photoFile' /><br>
             </div>
             <hr>          
+            
+            <c:forEach items="${commentList}" var="comment">
+              <p>${comment.writer.nickname}</p>
+              <p>${comment.comment}</p>
+              <p>${comment.createDate}</p>
+            </c:forEach>
+            
 		        <button type="button" class="btn" onclick="backPopup()">back</button>
           </c:otherwise>
         </c:choose>
+        
+        <form id="comment-form" action='../comment/add' name='commentInfo' method='post' >
+	        <label>comment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+	        <input type="text" name="comment" style="margin-left: 2px;">
+	        <input type="hidden" name="boardNo" style="margin-left: 2px;">
+	        <button class="btn " type="submit" onclick="commentPopup()" >comment</button>
+        </form>
+        
     </div> 
 
 <script>  

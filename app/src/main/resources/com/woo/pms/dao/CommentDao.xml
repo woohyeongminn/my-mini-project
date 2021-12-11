@@ -14,106 +14,50 @@
     <id column="user_no" property="no"/> 
     <result column="nickname" property="nickname"/>
     <result column="active" property="activityState"/>
-      
     </association> 
  
  </resultMap>
  
  <sql id="select1">
-     select 
-       b.board_no,
-       b.title,
-       b.content,
-       b.view_count,
-       b.registered_dt,
-       u.user_no,        
-       u.nickname,
-       u.active
+
  </sql>   
  
 <!-- ========================================================================= --> 
 
   <insert id="insert" parameterType="Board">
-    insert into board(title,content,view_count,user_no)
-    values(#{title},#{content},#{viewCount},#{writer.no})
+    insert into comment(comment,user_no,board_no)
+    values(#{comment},#{writer.no},#{boardNo})
   </insert> 
   
-   <update id="updateTitle" parameterType="Board">
-   update board set
-     title=#{title}
+   <update id="update" parameterType="Comment">
+   update comment set
+     comment=#{comment}
    where
-     board_no=#{no}    
+     comment_no=#{no}    
    </update> 	
    
-   <update id="updateContent" parameterType="Board">
-   update board set
-     content=#{content}
-   where
-     board_no=#{no}    
-   </update>     
-   
-   <update id="updateViewCount" parameterType="int">
-     update board set
-       view_count= view_count + 1
-     where board_no=#{no}
-   </update> 
-   
   <delete id="delete" parameterType="int">
-    delete from board
-    where board_no=#{no}
+    delete from comment
+    where comment_no=#{no}
   </delete> 
   
 <!-- ========================================================================= -->      
 
-  <select id="findByNo" resultMap="BoardMap" parameterType="int">
-    <include refid="select1"/>
-      from
-         board b
-      left outer join user u on u.user_no=b.user_no  
-      where
-         b.board_no=#{boardNo}      
+  <select id="findAllByNo" resultMap="CommentMap" parameterType="int">
+    select 
+      c.comment_no,
+      c.comment,
+      c.create_dt,
+      u.user_no,        
+      u.nickname,
+      u.active
+    from
+      comment c
+    left outer join user u on u.user_no=c.user_no  
+    where
+      c.board_no=#{boardNo}      
   </select>
   
-  <select id="findAll" resultMap="BoardMap" parameterType="map">
-	  <include refid="select1"/>
-	    from
-	       board b
-	    left outer join user u on u.user_no=b.user_no  
-			order by
-			   b.board_no desc
-	       limit #{offset}, #{length}		   
-  </select>
-  
-  <select id="count" resultType="int">
-     select
-       count(*)
-     from board b
-       left outer join user u on u.user_no=b.user_no
-  </select>  
-
-<!-- 
-  <select id="findMyAll" resultMap="BoardMap" parameterType="map">
-    <include refid="select1"/>
-      from
-         board b
-      left outer join user u on u.user_no=b.user_no  
-      where
-        u.user_no=#{userNo} 
-      order by
-         b.board_no desc
-         limit #{offset}, #{length}      
-  </select>  
-
-  <select id="myCount" resultType="int" parameterType="int">
-     select
-       count(*)
-     from board b
-       inner join user u on u.user_no=b.user_no
-     where 
-       u.user_no=#{userNo}      
-  </select>
- -->  
-
 </mapper>
 
 
