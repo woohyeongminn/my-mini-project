@@ -68,9 +68,7 @@
 				      <hr>  
 
 	            <c:forEach items="${commentList}" var="comment">
-	              <p>${comment.writer.nickname}</p>
-	              <p>${comment.comment}</p>
-	              <p>${comment.createDate}</p>
+	              <p>${comment.writer.nickname} : ${comment.comment} ${comment.createDate}</p>
 	            </c:forEach>	
 	            			                
 			        <button class="btn " type="submit" onclick="updatePopup()" >update</button>
@@ -119,24 +117,25 @@
             </div>
             <hr>          
             
-            <c:forEach items="${commentList}" var="comment">
-              <p>${comment.writer.nickname}</p>
-              <p>${comment.comment}</p>
-              <p>${comment.createDate}</p>
-            </c:forEach>
+              <c:forEach items="${commentList}" var="comment">
+                <p>${comment.writer.nickname} : ${comment.comment}&nbsp;&nbsp;${comment.createDate}</p>
+              </c:forEach>
             
 		        <button type="button" class="btn" onclick="backPopup()">back</button>
           </c:otherwise>
         </c:choose>
         
+        <br><br>
         <form id="comment-form" action='../comment/add' name='commentInfo' method='post' >
 	        <label>comment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 	        <input type="text" name="comment" style="margin-left: 2px;">
-	        <input type="hidden" name="boardNo" style="margin-left: 2px;">
-	        <button class="btn " type="submit" onclick="commentPopup()" >comment</button>
+	        <input id="f-no" type="hidden" name="boardNo" value="${board.no}"/>
+	        <button class="btn " type="submit">comment</button>
         </form>
         
+				<div style="clear:left"></div>
     </div> 
+
 
 <script>  
 var no = document.querySelector("#f-no");

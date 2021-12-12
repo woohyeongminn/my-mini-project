@@ -8,7 +8,7 @@
  <resultMap type="Comment" id="CommentMap">
 	  <id column="comment_no" property="no"/>
 	  <result column="comment" property="comment"/>
-	  <result column="registered_dt" property="createDate"/>
+	  <result column="create_dt" property="createDate"/>
 	    
 	  <association property="writer" javaType="User">
     <id column="user_no" property="no"/> 
@@ -24,9 +24,9 @@
  
 <!-- ========================================================================= --> 
 
-  <insert id="insert" parameterType="Board">
+  <insert id="insert" parameterType="map">
     insert into comment(comment,user_no,board_no)
-    values(#{comment},#{writer.no},#{boardNo})
+    values(#{comment.comment},#{comment.writer.no},#{boardNo})
   </insert> 
   
    <update id="update" parameterType="Comment">

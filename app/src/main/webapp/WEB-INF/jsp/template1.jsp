@@ -13,14 +13,19 @@
 <style>
  .container {
  text-align: center;
+ min-height: 100vh;
+ width:100%
  }
- body {
- xmargin-left: 100px; 
- xmargin-right: 100px;
+ section {
+  padding-bottom:100px;
+ }
+ html, body {
+  margin: 0;
+  padding:0;
  }
  .footer {
    width:100%;
-   height:100px;
+   height:110px;
    position:absolute;
    bottom:0;
    text-align: center;
@@ -28,25 +33,32 @@
  } 
 </style>
 
+<html>
  
 <title>hm-Woo</title>
 
-<c:if test="${not empty refresh}">
-  <meta http-equiv="Refresh" content="${refresh}">   
-</c:if>
+	<c:if test="${not empty refresh}">
+	  <meta http-equiv="Refresh" content="${refresh}">   
+	</c:if>
 
   <jsp:include page="header.jsp"/>
     
   <body>
     <div class="container">
 	     <div class="test">
+	      <section>
 		      <p>
 		        <jsp:include page="${contentUrl}"/>
 		      </p>
+	      </section>
 	     </div> 
     
     <jsp:include page="footer.jsp"/> 
+    
     </div>
   </body>  
+</html> 
+
+  
     
     

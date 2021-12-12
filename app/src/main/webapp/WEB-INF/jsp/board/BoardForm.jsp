@@ -51,8 +51,8 @@
         <input id='f-photo' type='file' name='photoFile' /><br>
       </div>
 	    <hr>
-			  <button class="btn " type="submit" onclick="addPopup()" >registration</button>
-			  <button type="button" class="btn" onclick="backPopup()">back</button>
+			  <button class="btn" type="submit" onclick="addPopup()" >registration</button>
+			  <button class="btn" type="button" onclick="backPopup()">back</button>
 			</form>
     </div> 
 

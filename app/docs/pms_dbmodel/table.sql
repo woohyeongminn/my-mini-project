@@ -120,7 +120,7 @@ CREATE TABLE comment (
   comment    TEXT    NOT NULL COMMENT '댓글', -- 댓글
   board_no   INTEGER NOT NULL COMMENT '게시판번호', -- 게시판번호
   user_no    INTEGER NOT NULL COMMENT '유저번호', -- 유저번호
-  create_dt  DATE    NULL     DEFAULT curdate() COMMENT '작성일' -- 작성일
+  create_dt  DATE    NOT NULL DEFAULT curdate() COMMENT '작성일' -- 작성일
 )
 COMMENT '댓글';
 
@@ -130,6 +130,9 @@ ALTER TABLE comment
     PRIMARY KEY (
       comment_no -- 댓글번호
     );
+
+ALTER TABLE comment
+  MODIFY COLUMN comment_no INTEGER NOT NULL AUTO_INCREMENT COMMENT '댓글번호';
 
 -- 댓글싫어요
 CREATE TABLE comment_hate (

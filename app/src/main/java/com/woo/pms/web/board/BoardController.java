@@ -104,6 +104,10 @@ public class BoardController {
     Board board = boardDao.findByNo(no);
     List<Comment> commentList = commentDao.findAllByNo(no);
 
+    for (Comment c : commentList) {
+      System.out.println(c);
+    }
+
     boardDao.updateViewCount(no);
     sqlSessionFactory.openSession().commit();
 
