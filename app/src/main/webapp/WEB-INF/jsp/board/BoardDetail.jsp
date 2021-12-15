@@ -68,7 +68,7 @@
 				      <hr>  
 
 	            <c:forEach items="${commentList}" var="comment">
-	              <p>${comment.writer.nickname} : ${comment.comment} ${comment.createDate}</p>
+	              <p>↳ ${comment.writer.nickname} : ${comment.comment}&nbsp;|&nbsp;${comment.createDate}</p>
 	            </c:forEach>	
 	            			                
 			        <button class="btn " type="submit" onclick="updatePopup()" >update</button>
@@ -118,7 +118,7 @@
             <hr>          
             
               <c:forEach items="${commentList}" var="comment">
-                <p>${comment.writer.nickname} : ${comment.comment}&nbsp;&nbsp;${comment.createDate}</p>
+                <p>↳ ${comment.writer.nickname} : ${comment.comment}&nbsp;|&nbsp;${comment.createDate}</p>
               </c:forEach>
             
 		        <button type="button" class="btn" onclick="backPopup()">back</button>
