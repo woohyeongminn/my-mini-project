@@ -126,12 +126,19 @@
         </c:choose>
         
         <br><br>
-        <form id="comment-form" action='../comment/add' name='commentInfo' method='post' >
-	        <label>comment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-	        <input type="text" name="comment" style="margin-left: 2px;">
-	        <input id="f-no" type="hidden" name="boardNo" value="${board.no}"/>
-	        <button class="btn " type="submit">comment</button>
-        </form>
+        <c:choose>
+	        <c:when test="${not empty loginUser}">
+		        <form id="comment-form" action='../comment/add' name='commentInfo' method='post' >
+			        <label>comment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			        <input type="text" name="comment" style="margin-left: 2px;">
+			        <input id="f-no" type="hidden" name="boardNo" value="${board.no}"/>
+			        <button class="btn " type="submit">comment</button>
+	          </form>
+	        </c:when>
+	        <c:otherwise>
+            <button class="btn" onclick="notLogin()">comment</button>
+	        </c:otherwise>  
+        </c:choose>
         
 				<div style="clear:left"></div>
     </div> 
@@ -157,6 +164,10 @@ function updatePopup() {
 function backPopup() {
   var link = 'http://localhost:8080/woo/app/board/list';
   location.href=link;
+}
+
+function notLogin() {
+	alert("please do login.")
 }
   
 </script>

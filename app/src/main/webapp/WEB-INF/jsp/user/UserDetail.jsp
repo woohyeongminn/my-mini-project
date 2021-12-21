@@ -39,7 +39,7 @@
       
       <div class="ut">
         <label for='f-tel'>tel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <input id='i-tel' type='tel' name='tel' value="${user.tel}" style="border:0 solid black" readonly/>
+        <input id='i-tel' type='tel' name='tel' value="${user.tel}" style="border:0 solid black; padding-left:0; " readonly/>
       </div>    
 
       <form action='update/nickname' name='userInfo' method='post'>    
