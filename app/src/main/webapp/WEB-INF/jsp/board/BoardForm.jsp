@@ -8,7 +8,7 @@
   max-width: 900px;
   margin: 0 auto;
   font-size: 14px;
-  }   
+  }     
   label {
     margin-right: 5px;
     text-align: center;
