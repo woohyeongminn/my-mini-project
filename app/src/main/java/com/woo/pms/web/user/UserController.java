@@ -82,6 +82,7 @@ public class UserController {
     }
     return mv;
   }  
+  //test
 
   @RequestMapping("/user/update/nickname")
   protected ModelAndView updateNickname(HttpSession session, String nickname) throws Exception {
