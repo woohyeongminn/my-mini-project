@@ -24,4 +24,13 @@ public class FindInfoController {
     return mv;
   }
 
+  public ModelAndView findEmail(String[] tel, String name) throws Exception {
+    ModelAndView mv = new ModelAndView();
+
+
+
+
+    return null;
+  }
+
 }
