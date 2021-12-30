@@ -4,8 +4,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import com.woo.pms.dao.UserDao;
+import com.woo.pms.domain.User;
 
 @Controller
 public class FindInfoController {
@@ -13,7 +15,7 @@ public class FindInfoController {
   @Autowired UserDao userDao;
   @Autowired SqlSessionFactory sqlSessionFactory;
 
-  @GetMapping("/find/email/form")
+  @GetMapping("/user/find/email/form")
   public ModelAndView findEmailForm() throws Exception {
 
     ModelAndView mv = new ModelAndView();
@@ -24,8 +26,28 @@ public class FindInfoController {
     return mv;
   }
 
-  public ModelAndView findEmail(String[] tel, String name) throws Exception {
+  @PostMapping("/user/find/email")
+  public ModelAndView findEmail(String tel, String name) throws Exception {
     ModelAndView mv = new ModelAndView();
+
+    User userInfo = userDao.findEmailByNameAndTel(name, tel);
+
+    if (userInfo != null) {
+      String email = 
+          userInfo.getEmail().replace(
+              userInfo.getEmail().substring(
+                  userInfo.getEmail().lastIndexOf("@"), userInfo.getEmail().length()),
+              "*****");
+      mv.addObject("email", email);
+      mv.addObject("user", userInfo);
+      mv.addObject("contentUrl", "member/FindEmail.jsp");
+      mv.setViewName("template1");
+
+    } else {
+
+
+    }
+
 
 
 

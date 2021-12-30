@@ -15,10 +15,14 @@ public interface UserDao {
   void updateActive(User user) throws Exception;
 
   List<User> findAll() throws Exception;
+  // 로그인 후 내 정보 확인
   User findByNo(int no) throws Exception;
+  // 로그인
   User findByEmailAndPassword(@Param("email") String email, @Param("password") String password) throws Exception;
+  // 가입시 등록된 전화번호와 이름을 통한 이메일 찾기
   User findEmailByNameAndTel(@Param("name") String name, @Param("tel") String tel) throws Exception;
+  // 가입시 등록된 이름과 이메일로 
   User findByNameAndEmail(@Param("name") String name, @Param("email") String email) throws Exception;
-
+  // 닉네임 중복확인 
   String nicknameOverlap(String nickname) throws Exception;
 }
