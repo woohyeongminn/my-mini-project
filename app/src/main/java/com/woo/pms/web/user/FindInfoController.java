@@ -1,5 +1,6 @@
 package com.woo.pms.web.user;
 
+import javax.servlet.ServletContext;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,9 @@ public class FindInfoController {
 
   @Autowired UserDao userDao;
   @Autowired SqlSessionFactory sqlSessionFactory;
+  @Autowired ServletContext sc;
 
-  @GetMapping("/user/find/email/form")
+  @GetMapping("/user/findemail/form")
   public ModelAndView findEmailForm() throws Exception {
 
     ModelAndView mv = new ModelAndView();
@@ -26,7 +28,7 @@ public class FindInfoController {
     return mv;
   }
 
-  @PostMapping("/user/find/email")
+  @PostMapping("/user/findemail")
   public ModelAndView findEmail(String tel, String name) throws Exception {
     ModelAndView mv = new ModelAndView();
 
@@ -44,15 +46,14 @@ public class FindInfoController {
       mv.setViewName("template1");
 
     } else {
-
-
+      mv.addObject("pageTitle", "⚠정보 오류");
+      mv.addObject("refresh", "2;url=findemailform");
+      mv.addObject("contentUrl", "user/InputFail.jsp");
+      mv.setViewName("template1");      
     }
-
-
-
-
-
-    return null;
+    return mv;
   }
+
+
 
 }
