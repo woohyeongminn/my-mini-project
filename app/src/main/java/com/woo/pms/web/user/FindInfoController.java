@@ -46,10 +46,11 @@ public class FindInfoController {
       mv.setViewName("template1");
 
     } else {
-      mv.addObject("pageTitle", "⚠정보 오류");
-      mv.addObject("refresh", "2;url=findemailform");
-      mv.addObject("contentUrl", "user/InputFail.jsp");
-      mv.setViewName("template1");      
+      Exception error = new Exception("login error!");
+      mv.addObject("error", error);
+      mv.addObject("contentUrl", "error.jsp");
+      mv.setViewName("template1");
+      return mv;    
     }
     return mv;
   }
