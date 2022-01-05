@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import com.woo.pms.dao.UserDao;
 import com.woo.pms.domain.User;
+import com.woo.pms.util.RandomPw;
+import com.woo.pms.util.SendMail;
 
 @Controller
 public class FindInfoController {
@@ -56,5 +58,42 @@ public class FindInfoController {
   }
   //test
 
+  @GetMapping("/user/getpwform")
+  public ModelAndView getPasswordForm() throws Exception {
+    ModelAndView mv = new ModelAndView();
 
+    mv.addObject("contentUrl", "user/GetPwByEmailForm.jsp");
+    mv.setViewName("template1");
+    return mv;
+  }
+
+
+  @PostMapping("/user/getpw")
+  public ModelAndView getPassword(String name, String email) throws Exception {
+    ModelAndView mv = new ModelAndView();
+    SendMail sendMail = new SendMail();
+    RandomPw randomPw = new RandomPw();
+
+    User user  = userDao.findByNameAndEmail(name, email);
+
+    if (user != null) {
+      String pw = randomPw.randomPw();
+      user.setPassword(pw);
+      sendMail.sendMail(email, pw);
+      userDao.updatePassword(user);
+      sqlSessionFactory.openSession().commit();
+
+      mv.addObject("user", user);
+      mv.addObject("contentUrl", "member/GetPwByEmail.jsp");
+      mv.setViewName("template1");
+    } else {
+      mv.addObject("refresh", "2;url=getpwform");
+      mv.addObject("contentUrl", "../Noinfo.jsp");
+      mv.setViewName("template1");
+
+    }
+    return mv;
+  }
 }
+
+
