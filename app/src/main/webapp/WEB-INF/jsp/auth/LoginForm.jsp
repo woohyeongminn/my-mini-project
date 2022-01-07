@@ -38,7 +38,7 @@
 <script>
 
 function findInfo() {
-	  var link = 'http://localhost:8080/woo/app/board/list';
+	  var link = 'http://localhost:8080/woo/app/user/findemailform';
 	  location.href=link;
 	}
 

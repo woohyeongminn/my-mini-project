@@ -19,13 +19,13 @@ public class FindInfoController {
   @Autowired SqlSessionFactory sqlSessionFactory;
   @Autowired ServletContext sc;
 
-  @GetMapping("/user/findemail/form")
+  @GetMapping("/user/findemailform")
   public ModelAndView findEmailForm() throws Exception {
 
     ModelAndView mv = new ModelAndView();
 
     mv.addObject("pageTitle", "내 정보 찾기");
-    mv.addObject("contentUrl", "member/FindEmailForm.jsp");
+    mv.addObject("contentUrl", "user/FindEmailForm.jsp");
     mv.setViewName("template1");
     return mv;
   }
@@ -35,6 +35,7 @@ public class FindInfoController {
     ModelAndView mv = new ModelAndView();
 
     User userInfo = userDao.findEmailByNameAndTel(name, tel);
+    System.out.println(userInfo);
 
     if (userInfo != null) {
       String email = 
@@ -44,13 +45,12 @@ public class FindInfoController {
               "*****");
       mv.addObject("email", email);
       mv.addObject("user", userInfo);
-      mv.addObject("contentUrl", "member/FindEmail.jsp");
+      mv.addObject("contentUrl", "user/FindEmail.jsp");
       mv.setViewName("template1");
 
     } else {
-      Exception error = new Exception("login error!");
-      mv.addObject("error", error);
-      mv.addObject("contentUrl", "error.jsp");
+      // mv.addObject("refresh", "2;url=findemailform");
+      mv.addObject("contentUrl", "../Noinfo.jsp");
       mv.setViewName("template1");
       return mv;    
     }
