@@ -58,7 +58,7 @@ public class AuthController {
 
     } else {
       mv.addObject("refresh", "2;url=form");
-      mv.addObject("contentUrl", "auth/LoginFail.jsp");
+      mv.addObject("contentUrl", "Noinfo.jsp");
       mv.setViewName("template1");
     }
     return mv;

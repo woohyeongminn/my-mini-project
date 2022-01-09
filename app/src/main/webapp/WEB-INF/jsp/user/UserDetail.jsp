@@ -61,13 +61,13 @@
 
       <form action='delete' name='userInfo' method='post'>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <button class="btn" type="submit">secession</button>
+            <button class="btn" type="submit" onclick="delete()">secession</button>
           </div>
       </form>	
       <hr><br>	  
 <script>
 
-function addCalendar(obj) { 
+function delete() { 
     alert("membership cancellation has been successful.")
     }
 </script>

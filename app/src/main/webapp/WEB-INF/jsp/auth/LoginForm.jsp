@@ -29,7 +29,8 @@
     </div>
     <br>	    
 	  <button type="submit" style="background-color:white">login</button>
-	  <button type="button" style="background-color:white" onclick="findInfo()">find</button> 
+	  <button type="button" style="background-color:white" onclick="findEmailForm()">email</button> 
+	  <button type="button" style="background-color:white" onclick="getPasswordForm()">password</button> 
   </div>
 </form>
 
@@ -37,9 +38,13 @@
 
 <script>
 
-function findInfo() {
+function findEmailForm() {
 	  var link = 'http://localhost:8080/woo/app/user/findemailform';
 	  location.href=link;
 	}
+function getPasswordForm() {
+    var link = 'http://localhost:8080/woo/app/user/getpwform';
+    location.href=link;
+  }	
 
 </script>

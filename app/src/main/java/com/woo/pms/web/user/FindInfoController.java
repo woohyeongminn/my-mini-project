@@ -24,7 +24,6 @@ public class FindInfoController {
 
     ModelAndView mv = new ModelAndView();
 
-    mv.addObject("pageTitle", "내 정보 찾기");
     mv.addObject("contentUrl", "user/FindEmailForm.jsp");
     mv.setViewName("template1");
     return mv;
@@ -49,8 +48,8 @@ public class FindInfoController {
       mv.setViewName("template1");
 
     } else {
-      // mv.addObject("refresh", "2;url=findemailform");
-      mv.addObject("contentUrl", "../Noinfo.jsp");
+      mv.addObject("refresh", "2;url=findemailform");
+      mv.addObject("contentUrl", "Noinfo.jsp");
       mv.setViewName("template1");
       return mv;    
     }
@@ -62,7 +61,7 @@ public class FindInfoController {
   public ModelAndView getPasswordForm() throws Exception {
     ModelAndView mv = new ModelAndView();
 
-    mv.addObject("contentUrl", "user/GetPwByEmailForm.jsp");
+    mv.addObject("contentUrl", "user/GetPwForm.jsp");
     mv.setViewName("template1");
     return mv;
   }
@@ -84,11 +83,11 @@ public class FindInfoController {
       sqlSessionFactory.openSession().commit();
 
       mv.addObject("user", user);
-      mv.addObject("contentUrl", "member/GetPwByEmail.jsp");
+      mv.addObject("contentUrl", "user/GetPw.jsp");
       mv.setViewName("template1");
     } else {
       mv.addObject("refresh", "2;url=getpwform");
-      mv.addObject("contentUrl", "../Noinfo.jsp");
+      mv.addObject("contentUrl", "Noinfo.jsp");
       mv.setViewName("template1");
 
     }

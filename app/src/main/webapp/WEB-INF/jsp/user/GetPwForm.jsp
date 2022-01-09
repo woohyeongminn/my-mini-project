@@ -15,30 +15,30 @@
 
 <br><br><br><br>
     <div id="top">
-      <b style="font-size: 20px">FIND</b><br> 
+      <b style="font-size: 20px">TEMPORARY PASSWORD</b><br> 
     </div>
 <hr><br>
 
 <body>
-  <form action='findemail' name='userInfo' method='post' enctype="multipart/form-data" onsubmit="return checkValue()">
+  <form action='getpw' name='userInfo' method='post' enctype="multipart/form-data" onsubmit="return checkValue()">
     <div class="all-content"> 
     
-	    <div class="un">
-	      <label for='f-name'>name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-	      <input id='i-name' type='text' name='name'/>
-	    </div>
-
-	    <div class="ut">
-	      <label for='f-tel'>tel &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-	      <input id='i-tel' type='tel' name='tel'/>
-	    </div>    
-    </div>
-    <br>
+      <div class="ue">
+        <label for='f-email'>email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input id='i-email' type='email' name='email' style="margin-left: 2px;"/>
+      </div> 
+  
+      <div class="un">
+        <label for='f-name'>name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+        <input id='i-name' type='text' name='name'/>
+      </div>
+     <br>
     
-    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-       <button class="btn" type="submit">find</button>
-       <button class="btn" type="button" onclick="login()">back</button>
-    </div>   
+      <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+       <button class="btn" type="submit">issue</button>
+       <button class="btn" type="button" onclick="back()">back</button>
+      </div>
+   </div>   
   </form>
   <br><hr>
 </body>
@@ -52,13 +52,13 @@
 		  alert("please enter your name")
 		  return false;
 	 }
-	 else if (!form.tel.value) {
-	      alert("please enter your tel")
+	 else if (!form.email.value) {
+	      alert("please enter your email)"
 	      return false;
 	   } 
  }
  
-  function login() {
+  function back() {
 	    var link = 'http://localhost:8080/woo/app/auth/form';
 	    location.href=link;
 	  }  
