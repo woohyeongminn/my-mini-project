@@ -19,7 +19,7 @@ public class FindInfoController {
   @Autowired SqlSessionFactory sqlSessionFactory;
   @Autowired ServletContext sc;
 
-  @GetMapping("/user/findemailform")
+  @GetMapping("/user/find/emailform")
   public ModelAndView findEmailForm() throws Exception {
 
     ModelAndView mv = new ModelAndView();
@@ -29,7 +29,7 @@ public class FindInfoController {
     return mv;
   }
 
-  @PostMapping("/user/findemail")
+  @PostMapping("/user/find/email")
   public ModelAndView findEmail(String tel, String name) throws Exception {
     ModelAndView mv = new ModelAndView();
 
@@ -48,7 +48,7 @@ public class FindInfoController {
       mv.setViewName("template1");
 
     } else {
-      mv.addObject("refresh", "2;url=findemailform");
+      mv.addObject("refresh", "2;url=emailform");
       mv.addObject("contentUrl", "Noinfo.jsp");
       mv.setViewName("template1");
       return mv;    
@@ -57,7 +57,7 @@ public class FindInfoController {
   }
   //test
 
-  @GetMapping("/user/getpwform")
+  @GetMapping("/user/get/pwform")
   public ModelAndView getPasswordForm() throws Exception {
     ModelAndView mv = new ModelAndView();
 
@@ -67,7 +67,7 @@ public class FindInfoController {
   }
 
 
-  @PostMapping("/user/getpw")
+  @PostMapping("/user/get/pw")
   public ModelAndView getPassword(String name, String email) throws Exception {
     ModelAndView mv = new ModelAndView();
     SendMail sendMail = new SendMail();
@@ -86,7 +86,7 @@ public class FindInfoController {
       mv.addObject("contentUrl", "user/GetPw.jsp");
       mv.setViewName("template1");
     } else {
-      mv.addObject("refresh", "2;url=getpwform");
+      mv.addObject("refresh", "2;url=pwform");
       mv.addObject("contentUrl", "Noinfo.jsp");
       mv.setViewName("template1");
 

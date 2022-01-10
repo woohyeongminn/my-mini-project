@@ -20,7 +20,7 @@
 <hr><br>
 
 <body>
-  <form action='getpw' name='userInfo' method='post' enctype="multipart/form-data" onsubmit="return checkValue()">
+  <form action='pw' name='userInfo' method='post' enctype="multipart/form-data" onsubmit="return checkValue()">
     <div class="all-content"> 
     
       <div class="ue">

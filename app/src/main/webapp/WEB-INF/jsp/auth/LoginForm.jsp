@@ -39,11 +39,11 @@
 <script>
 
 function findEmailForm() {
-	  var link = 'http://localhost:8080/woo/app/user/findemailform';
+	  var link = 'http://localhost:8080/woo/app/user/find/emailform';
 	  location.href=link;
 	}
 function getPasswordForm() {
-    var link = 'http://localhost:8080/woo/app/user/getpwform';
+    var link = 'http://localhost:8080/woo/app/user/get/pwform';
     location.href=link;
   }	
 

@@ -34,7 +34,7 @@ function login() {
     location.href=link;
   }
 function getPwform() {
-    var link = 'http://localhost:8080/woo/app/user/getpwform';
+    var link = 'http://localhost:8080/woo/app/user/get/pwform';
     location.href=link;
   }  
 </script>

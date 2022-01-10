@@ -20,7 +20,7 @@
 <hr><br>
 
 <body>
-  <form action='findemail' name='userInfo' method='post' enctype="multipart/form-data" onsubmit="return checkValue()">
+  <form action='email' name='userInfo' method='post' enctype="multipart/form-data" onsubmit="return checkValue()">
     <div class="all-content"> 
     
 	    <div class="un">
