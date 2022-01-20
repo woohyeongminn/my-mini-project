@@ -17,9 +17,18 @@
       <b style="font-size: 20px">INFOMATION</b><br> 
     </div>
 <hr><br>
-<b>${user.name}'s e-mail</b>
-<br>
-<b>${email}</b>
+
+<c:choose>
+  <c:if test="${user.activityState == 1}">
+		<b>${user.name}'s e-mail</b>
+		<br>
+		<b>${email}</b>
+  </c:if>  
+  <c:otherwise>
+    
+  </c:otherwise>
+</c:choose>
+
 <br>
 <br>
     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
