@@ -19,13 +19,13 @@
 <hr><br>
 
 <c:choose>
-  <c:if test="${user.activityState == 1}">
+  <c:when test="${user.activityState == 1}">
 		<b>${user.name}'s e-mail</b>
 		<br>
 		<b>${email}</b>
-  </c:if>  
+  </c:when>  
   <c:otherwise>
-    
+    <b>test</b> 
   </c:otherwise>
 </c:choose>
    
