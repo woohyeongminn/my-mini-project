@@ -29,7 +29,7 @@
 
 <script>
 function findEmailform() {
-    var link = 'http://localhost:8080/woo/app/user/find/emaiform';
+    var link = 'http://localhost:8080/woo/app/user/find/emailform';
     location.href=link;
   }
 function login() {
