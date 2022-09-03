@@ -17,54 +17,58 @@
   </resultMap>
   
   <sql id="select1">
-    select
-      u.user_no,
-      u.name,
-      u.nickname,
-      u.email,
-      u.tel,
-      u.join_dt,
-      u.active
-    from
-      user u  
+    select u.user_no
+         , u.name
+         , u.nickname
+         , u.email
+         , u.tel
+         , u.join_dt
+         , u.active
+      from user u  
   </sql>
 
 <!-- ======================================================================= -->  
   <insert id="insert" parameterType="user">
-    insert into user(name,nickname,email,password,tel)
-    values(#{name},#{nickname},#{email},password(#{password}),#{tel})
+    insert into 
+           user(name
+              , nickname
+              , email
+              , password
+              , tel)
+        values(#{name}
+              , #{nickname}
+              , #{email}
+              , password(#{password})
+              , #{tel})
   </insert>
   
   <update id="updateNickname" parameterType="user">
-    update user set
-      nickname=#{nickname}
-    where
-      user_no=#{no}    
+    update user 
+       set nickname = #{nickname}
+    where 1=1
+      and user_no = #{no}    
   </update>
   
   <update id="updatePassword" parameterType="user">
-    update user set
-      password=password(#{password})
-    where
-      user_no=#{no}    
+    update user 
+       set password = password(#{password})
+    where 1=1
+      and user_no = #{no}    
   </update> 
   
 <!-- =========================탈퇴시 상태변경===================== -->
   <update id="updateActive" parameterType="user">
-    update user set
-      active=2
-    where
-      user_no=#{no}    
+    update user 
+       set active=2
+    where 1=1
+      and user_no = #{no}    
   </update> 
 
 <!-- =========================닉네임 중복확인===================== -->
 	<select id="nickOverlap" resultType="string">
-	  select
-	    nickname
-	  from
-	    user
-	  where
-	    nickname = #{nickname}
+	  select nickname
+	    from user
+	   where nickname = #{nickname}
 	</select>   
 
 <!-- =========================정보 찾기===================== -->	
@@ -74,26 +78,29 @@
       
   <select id="findByNo" resultMap="UserMap">
    <include refid="select1"/>
-   where
-     user_no = #{no}
+   where 1=1
+     and user_no = #{no}
   </select>
   
   <select id="findByEmailAndPassword" resultMap="UserMap">
    <include refid="select1"/>
-   where
-     email = #{email} and password = password(#{password})
+   where 1=1
+     and email = #{email} 
+     and password = password(#{password})
   </select>
   
   <select id="findEmailByNameAndTel" resultMap="UserMap">
    <include refid="select1"/>
-   where
-     name = #{name} and tel = #{tel}
+   where 1=1
+     and name = #{name}
+     and tel = #{tel}
   </select> 
   
   <select id="findByNameAndEmail" resultMap="UserMap">
    <include refid="select1"/>
-   where
-     name = #{name} and email = #{email}
+   where 1=1
+     and name = #{name} 
+     and email = #{email}
   </select>         	 
 
 </mapper>
